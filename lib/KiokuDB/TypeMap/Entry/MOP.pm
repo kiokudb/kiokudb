@@ -63,6 +63,13 @@ sub compile_collapse_body {
     my $before_collapse = $self->before_collapse || sub {};
 
     my $meta = Class::MOP::get_metaclass_by_name($class);
+    
+    my @setonsave = map {
+        my $attr = $_;
+        sub { my $obj = shift; $attr->set_value($obj, $attr->setonsave->($obj)) }
+    } grep {
+        does_role($_->meta, 'KiokuDB::Meta::Attribute::SetOnSave')
+    } $meta->get_all_attributes;
 
     my @attrs = grep {
         !does_role($_->meta, 'KiokuDB::Meta::Attribute::DoNotSerialize')
@@ -159,6 +166,7 @@ sub compile_collapse_body {
                 }
             }
 
+            $_->($object) for @setonsave;
             $object->$before_collapse;
             
             my %collapsed;
