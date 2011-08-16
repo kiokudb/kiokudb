@@ -551,6 +551,27 @@ better, so make use of L<Moose::Meta::Class/make_immutable>.
 
 If true the object will be collapsed as part of its parent, without an ID.
 
+=item before_collapse
+
+=item after_expand
+
+Optional callbacks, which are invoked before collapsing and after expanding
+an entry, respectively.
+
+The callbacks can either be CODEREFs or function names. The callbacks will be invoked
+with the object, which is about to be collapsed or has just been expanded, as it's 
+first argument.
+
+    KiokuDB::TypeMap->new(
+        entries => {
+            'My::Class' => KiokuDB::TypeMap::Entry::MOP->new(
+                before_collapse => 'log_saved_objects',
+                after_expand    => sub { $_[0]->some_attribute('foobar'); }
+            ),
+        },
+    );
+
+
 =item check_class_versions
 
 If true (the default) then class versions will be checked on load and if there
