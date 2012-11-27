@@ -49,13 +49,27 @@ has write_upgrades => (
     default => 0,
 );
 
+has [qw(before_collapse after_expand)] => (
+    is  => "ro",
+    isa => "Maybe[Str|CodeRef]",
+);
+
 # FIXME collapser and expaner should both be methods in Class::MOP::Class,
 # apart from the visit call
 
 sub compile_collapse_body {
     my ( $self, $class, @args ) = @_;
 
+    my $before_collapse = $self->before_collapse || sub {};
+
     my $meta = Class::MOP::get_metaclass_by_name($class);
+    
+    my @setonsave = map {
+        my $attr = $_;
+        sub { my $obj = shift; $attr->set_value($obj, $attr->setonsave->($obj)) }
+    } grep {
+        does_role($_->meta, 'KiokuDB::Meta::Attribute::SetOnSave')
+    } $meta->get_all_attributes;
 
     my @attrs = grep {
         !does_role($_->meta, 'KiokuDB::Meta::Attribute::DoNotSerialize')
@@ -152,6 +166,9 @@ sub compile_collapse_body {
                 }
             }
 
+            $_->($object) for @setonsave;
+            $object->$before_collapse;
+            
             my %collapsed;
 
             attr: foreach my $attr ( @attrs ) {
@@ -184,6 +201,13 @@ sub compile_collapse_body {
 sub compile_expand {
     my ( $self, $class, $resolver, @args ) = @_;
 
+    my $after_expand = $self->after_expand;
+    my $after_expand_wrapper = $self->after_expand ? sub {
+        my ($linker, $object) = @_;
+        $linker->load_queue;
+        $object->$after_expand;
+    } : sub {};
+
     my $meta = Class::MOP::get_metaclass_by_name($class);
 
     my $typemap_entry = $self;
@@ -196,6 +220,7 @@ sub compile_expand {
 
     return sub {
         my ( $linker, $entry, @args ) = @_;
+        my $object;
 
         if ( $entry->has_class_meta and !$anon ) {
             # the entry is for an anonymous subclass of this class, we need to
@@ -210,11 +235,13 @@ sub compile_expand {
             }
 
             my $method = $resolver->expand_method($anon_class);
-            return $linker->$method($entry, @args);
+            $object = $linker->$method($entry, @args);
+            $after_expand_wrapper->($linker, $object);
+            return $object;
         }
 
         if ( !$self->check_class_versions or $self->is_version_up_to_date($meta, $version, $entry->class_version) ) {
-            $linker->$inner($entry, @args);
+            $object=$linker->$inner($entry, @args);
         } else {
             my $upgraded = $self->upgrade_entry( linker => $linker, meta => $meta, entry => $entry, expand_args => \@args);
 
@@ -225,8 +252,11 @@ sub compile_expand {
                 $linker->backend->insert($upgraded);
             }
 
-            $linker->$inner($upgraded, @args);
+            $object=$linker->$inner($upgraded, @args);
         }
+        
+        $after_expand_wrapper->($linker, $object);
+        return $object;
     }
 }
 
@@ -520,6 +550,27 @@ better, so make use of L<Moose::Meta::Class/make_immutable>.
 =item intrinsic
 
 If true the object will be collapsed as part of its parent, without an ID.
+
+=item before_collapse
+
+=item after_expand
+
+Optional callbacks, which are invoked before collapsing and after expanding
+an entry, respectively.
+
+The callbacks can either be CODEREFs or function names. The callbacks will be invoked
+with the object, which is about to be collapsed or has just been expanded, as it's 
+first argument.
+
+    KiokuDB::TypeMap->new(
+        entries => {
+            'My::Class' => KiokuDB::TypeMap::Entry::MOP->new(
+                before_collapse => 'log_saved_objects',
+                after_expand    => sub { $_[0]->some_attribute('foobar'); }
+            ),
+        },
+    );
+
 
 =item check_class_versions
 
