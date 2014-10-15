@@ -4,7 +4,7 @@ use Moose;
 
 use KiokuDB::Entry;
 use KiokuDB::Reference;
-use JSON::XS 2.231 ();
+use JSON::MaybeXS;
 use JSON 2.12;
 
 use namespace::clean -except => 'meta';
