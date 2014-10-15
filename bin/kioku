@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 # PODNAME: kioku
+# ABSTRACT: command line wrapper around KiokuDB::Cmd
 
 use KiokuDB;
 use Try::Tiny;
@@ -25,3 +26,9 @@ sub try_run {
     KiokuDB::Cmd->run;
     exit;
 }
+
+=head1 SEE ALSO
+
+L<KiokuDB::Cmd>
+
+=cut

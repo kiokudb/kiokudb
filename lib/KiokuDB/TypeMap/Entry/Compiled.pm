@@ -1,4 +1,6 @@
 package KiokuDB::TypeMap::Entry::Compiled;
+# ABSTRACT: Object for storing collapse/expand methods
+
 use Moose;
 
 no warnings 'recursion';
@@ -30,10 +32,6 @@ __PACKAGE__
 __END__
 
 =pod
-
-=head1 NAME
-
-KiokuDB::TypeMap::Entry::Compiled - Object for storing collapse/expand methods
 
 =head1 SYNOPSIS
 
