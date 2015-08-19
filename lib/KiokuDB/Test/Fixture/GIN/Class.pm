@@ -5,7 +5,7 @@ use Test::More;
 use Test::Moose;
 use Scalar::Util qw(refaddr);
 
-use Search::GIN::Query::Class 0.03;
+use Search::GIN::Query::Class 0.07;
 
 use namespace::clean -except => 'meta';
 
