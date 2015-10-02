@@ -126,7 +126,7 @@
     * authoritative cache support
         * entry caching for slower backends
     * non authoritative cache
-        * various degrees of correctness (simpledb like "gurantees" ;-)
+        * various degrees of correctness (simpledb like "guarantees" ;-)
 
 * data sharding
     * map classes of UIDs to different backends or different tables in a
@@ -174,7 +174,7 @@
     * each of these is relatively small and self contained
     * lazy build attributes (for cached values)
         * build on store
-        * keep when storing but dont build on store
+        * keep when storing but don't build on store
             * make sure update() on immutable objects works for this, too
         * do not serialize
     * ID attribute
@@ -182,7 +182,7 @@
           field)
         * better than KiokuDB::Role::ID
     * Digest Part
-        * resistent to subclassing/role composition
+        * resistant to subclassing/role composition
             * however, order must be stable, sort get_all_attributes
                 * order by sort index is provided
                 * rest of attributes sorted:
@@ -239,7 +239,7 @@
                   used to list backrefs. In SQL this table can have delete triggers
                   i guess (ask mugwump), in BDB this would be manual.
             * incremental scheme
-                * parrot's tricolor garbage collection alrogithm is interesting
+                * parrot's tricolor garbage collection algorithm is interesting
                     * the data could be partly maintained during store/delete
                       operations, with a partial sweep performed every time some
                       statistic is tipped
@@ -251,7 +251,7 @@
               possibility of deadlocking, it would be nice to have an
               incremental scheme with small transactions
         * mark & sweep
-            * tri-color using some auxillary table
+            * tri-color using some auxiliary table
             * smaller transactions to update the aux table
             * online updating of the aux table interleaved
             * final txn reads the aux table, and deletes in a single txn

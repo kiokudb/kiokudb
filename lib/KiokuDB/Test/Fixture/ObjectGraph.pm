@@ -122,13 +122,13 @@ sub verify {
         is_deeply(
             [ map { $_->name } @{ $junior->parents } ],
             [ "George H. W. Bush", "Barbara Bush" ],
-            "ref in auxillary structure",
+            "ref in auxiliary structure",
         );
 
         is_deeply(
             [ grep { $_ == $junior } @{ $junior->parents->[0]->kids } ],
             [ $junior ],
-            "mutual ref in auxillary structure"
+            "mutual ref in auxiliary structure"
         );
 
         is( $junior->parents->[0]->so, $junior->parents->[1], "mutual refs in nested structure" );
