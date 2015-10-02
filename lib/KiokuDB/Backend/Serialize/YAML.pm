@@ -104,7 +104,7 @@ Serializes the entry and prints to the file handle.
 
 =item deserialize_from_stream $fh
 
-Reads until a YAML document boundry is reached, and then deserializes the
+Reads until a YAML document boundary is reached, and then deserializes the
 current buffer.
 
 =back

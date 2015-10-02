@@ -1135,13 +1135,13 @@ objects, etc.
 
 =begin original
 
-L<KiokuDB> can be asked to collapse such objects B<intrinsicly>, that is
+L<KiokuDB> can be asked to collapse such objects B<intrinsically>, that is
 instead of creating a new L<KiokuDB::Entry> with its own ID for the object, the
 object gets collapsed directly into its parent's structures.
 
 =end original
 
-L<KiokuDB>はB<intrinsicly>に、そのようなオブジェクトを、
+L<KiokuDB>はB<intrinsically>に、そのようなオブジェクトを、
 そのオブジェクトにそれ自身のIDと新しいL<KiokuDB::Entry>を作る代わりに、
 破壊するよう要求できます。オブジェクトが直接破壊できれば、親の構造の中に入ります。
 
@@ -1567,12 +1567,12 @@ L<Serach::GIN>インテグレーションを提供しています。
 =begin original
 
 L<Search::GIN> is a framework to index and query objects, inspired by Postgres'
-internal GIN api. GIN stands for Generalized Inverted Indexes.
+internal GIN API. GIN stands for Generalized Inverted Indexes.
 
 =end original
 
 L<Search::GIN>はインデックスとクエリーオブジェクトのフレームワークです。
-Postgresの内部GIN apiにインスパイアされました。
+Postgresの内部GIN APIにインスパイアされました。
 GINは、Generalized Inverted Indexes(訳注:汎用転置索引)の略です。
 
 =begin original

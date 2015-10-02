@@ -23,7 +23,7 @@ __END__
 
 This backend is an informational role for backends which can store arbitrary
 binary strings, especially utf8 data as bytes (without reinterpreting it as
-unicode strings when inflating).
+Unicode strings when inflating).
 
 This mostly has to do with L<KiokuDB::Backend::Serialize> variants (for example
 L<KiokuDB::Backend::Serialize::Storable> is binary safe, while

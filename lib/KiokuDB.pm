@@ -828,7 +828,7 @@ detect deadlocks on platforms which return C<EDEADLK> from C<flock>.
 L<Directory::Transactional> may provide alternative mechanisms in the future.
 
 Concurrency support in L<KiokuDB::Backend::DBI> depends on the database. SQLite
-defaults to serializable transaction isolation out of the box, wheras MySQL and
+defaults to serializable transaction isolation out of the box, whereas MySQL and
 PostgreSQL default to read committed.
 
 Depending on your application read committed isolation may be sufficient, but

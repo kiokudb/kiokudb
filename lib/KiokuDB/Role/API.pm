@@ -1,6 +1,6 @@
 package KiokuDB::Role::API;
 use Moose::Role;
-# ABSTRACT: Role for KiokuDB api (used to setup delegations).
+# ABSTRACT: Role for KiokuDB API (used to setup delegations).
 
 use namespace::clean -except => 'meta';
 

@@ -629,7 +629,7 @@ If true, after applying version upgrade handlers, the updated entry will be
 written back to the database.
 
 Defaults to false but might default to true in future versions (unless the
-database is in readonly mode).
+database is in read-only mode).
 
 =back
 

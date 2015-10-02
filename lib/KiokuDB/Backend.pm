@@ -67,7 +67,7 @@ __END__
     package KiokuDB::Backend::Foo;
     use Moose;
 
-    # load the core api and additional interfaces based on backend capabilities
+    # load the core API and additional interfaces based on backend capabilities
     with qw(
         KiokuDB::Backend
 
@@ -111,7 +111,7 @@ L<KiokuDB::Entry> objects.
 This role is supplemented by L<KiokuDB::Backend::Role::Query>, a role for
 backend specific queries.
 
-L<KiokuDB::Backend::Role::Query::Simple> provides a universal query api for
+L<KiokuDB::Backend::Role::Query::Simple> provides a universal query API for
 backends that can perform property based lookup.
 
 L<KiokuDB::Backend::Role::Query::GIN> is a role for using L<Search::GIN> based
@@ -235,14 +235,14 @@ API for enumerating entries.
 
 =item L<KiokuDB::Backend::Role::UnicodeSafe>
 
-If your serialization is able to store arbitrary binary data and/or unicode
+If your serialization is able to store arbitrary binary data and/or Unicode
 strings, these informational roles should be included.
 
 =item L<KiokuDB::Backend::Role::TXN>
 
 If your storage supports nested transactions (C<txn_begin>, C<txn_commit> etc)
-this role provides the api to expose that functionality to the high level
-L<KiokuDB> api.
+this role provides the API to expose that functionality to the high level
+L<KiokuDB> API.
 
 =item L<KiokuDB::Backend::Role::Query>
 

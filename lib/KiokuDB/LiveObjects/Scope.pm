@@ -77,7 +77,7 @@ __END__
 Live object scopes exist in order to ensure objects don't die too soon if the
 only other references to them are weak.
 
-When scopes are destroyed the refcounts of the objects they refer to go down,
+When scopes are destroyed, the ref-counts of the objects they refer to go down,
 and the parent scope is replaced in the live object set.
 
 =head1 METHODS
