@@ -72,7 +72,7 @@ sub resolve {
                         redo search;
                     }
                 } else {
-                    croak "Cannot resolve anonymous class with multiple inheritence: $class";
+                    croak "Cannot resolve anonymous class with multiple inheritance: $class";
                 }
             }
 

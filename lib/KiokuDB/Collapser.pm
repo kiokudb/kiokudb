@@ -369,7 +369,7 @@ sub id_conflict {
     my ( $self, $id, $object, $other ) = @_;
 
     if ( does_role($object, "KiokuDB::Role::ID::Content") and does_role($other, "KiokuDB::Role::ID::Content") ) {
-        # FIXME delegate this knowlege to the typemap? what if $object and
+        # FIXME delegate this knowledge to the typemap? what if $object and
         # $other have conflicting typemaps?
         $self->make_skip_entry( id => $id, object => $object );
 

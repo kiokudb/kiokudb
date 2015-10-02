@@ -24,10 +24,10 @@ __END__
 =head1 DESCRIPTION
 
 This backend role is an informational role for backends which can
-store unicode perl strings safely.
+store Unicode perl strings safely.
 
 This means that B<character> strings inserted to the database will not be
-retreived as B<byte> strings upon deserialization.
+retrieved as B<byte> strings upon deserialization.
 
 This mostly has to do with L<KiokuDB::Backend::Serialize> variants.
 

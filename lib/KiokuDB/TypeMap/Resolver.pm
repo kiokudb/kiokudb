@@ -127,7 +127,7 @@ This object is used by L<KiokuDB::Linker> and L<KiokuDB::Collapser> to map
 class names to collapsing/expanding method bodies.
 
 Since L<KiokuDB::TypeMap>s are fairly complex, and L<KiokuDB::TypeMap::Entry>
-objects can benefit from specializing to a class by precomputing some things,
+objects can benefit from specializing to a class by pre-computing some things,
 resolution is performed once per class, and the results are cached in the
 resolver.
 

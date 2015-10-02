@@ -109,7 +109,7 @@ use KiokuDB::TypeMap::Entry::Naive;
 }
 
 {
-    # typemap inheritence
+    # typemap inheritance
 
     my $ca = KiokuDB::TypeMap::Entry::Naive->new;
     my $foo = KiokuDB::TypeMap::Entry::Naive->new;
@@ -169,7 +169,7 @@ use KiokuDB::TypeMap::Entry::Naive;
 }
 
 {
-    # typemap inheritence of isa types
+    # typemap inheritance of isa types
 
     my $ca = KiokuDB::TypeMap::Entry::Naive->new;
     my $foo = KiokuDB::TypeMap::Entry::Naive->new;
@@ -253,7 +253,7 @@ use KiokuDB::TypeMap::Entry::Naive;
 }
 
 {
-    # typemap inheritence conflicts
+    # typemap inheritance conflicts
 
     my $ca = KiokuDB::TypeMap::Entry::Naive->new;
 

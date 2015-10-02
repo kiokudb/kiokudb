@@ -1,6 +1,6 @@
 package KiokuDB::Backend::Role::Clear;
 use Moose::Role;
-# ABSTRACT: Backend clearing api
+# ABSTRACT: Backend clearing API
 
 use namespace::clean -except => 'meta';
 
@@ -30,7 +30,7 @@ __END__
 
 =head1 DESCRIPTION
 
-This backend role provides an api for removing all entries from a backend.
+This backend role provides an API for removing all entries from a backend.
 
 This is optionally used by the dump loader script, and parts of the test suite.
 

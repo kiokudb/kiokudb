@@ -105,7 +105,7 @@ This is very trivial use of L<KiokuDB>, but it illustrates a few important
 things.
 
 First, no schema is necessary. L<KiokuDB> uses L<Moose> to introspect your
-object without needing to predefine anything like tables.
+object without needing to pre-define anything like tables.
 
 Second, every object in the database has an ID. If you don't choose an ID for
 an object, L<KiokuDB> will assign a UUID instead.
@@ -509,7 +509,7 @@ However, for some objects this is not the desired behavior. These are objects
 that represent values, like L<DateTime>, L<Path::Class> entries, L<URI>
 objects, etc.
 
-L<KiokuDB> can be asked to collapse such objects B<intrinsicly>, that is
+L<KiokuDB> can be asked to collapse such objects B<intrinsically>, that is
 instead of creating a new L<KiokuDB::Entry> with its own ID for the object, the
 object gets collapsed directly into its parent's structures.
 
@@ -567,7 +567,7 @@ results:
        }
     }
 
-This exact API is intentionally still underdefined. In the future it will be
+This exact API is intentionally still under-defined. In the future it will be
 compatible with L<DBIx::Class> 0.09's syntax.
 
 =head2 DBI SEARCH COLUMNS
@@ -642,7 +642,7 @@ C<create> flag must be passed:
     );
 
 The BDB backend uses L<BerkeleyDB::Manager> to do a lot of the L<BerkeleyDB>
-gruntwork. The L<BerkeleyDB::Manager> object will be instantiated using the
+grunt work. The L<BerkeleyDB::Manager> object will be instantiated using the
 arguments provided in the C<manager> attribute.
 
 Now that the storage is created we can make use of this backend, much like before:
@@ -697,7 +697,7 @@ L<KiokuDB::Backend::BDB::GIN> is a subclass of L<KiokuDB::Backend::BDB> that
 provides L<Search::GIN> integration.
 
 L<Search::GIN> is a framework to index and query objects, inspired by Postgres'
-internal GIN api. GIN stands for Generalized Inverted Indexes.
+internal GIN API. GIN stands for Generalized Inverted Indexes.
 
 Using L<Search::GIN> arbitrary search keys can be indexed for your objects, and
 these objects can then be looked up using queries.
@@ -727,7 +727,7 @@ indexing of our objects:
 
     $dir->store( @random_objects );
 
-To look up the objects, we use the a manual key lookup query:
+To look up the objects, we use the manual key lookup query:
 
     my $query = Search::GIN::Query::Manual->new(
         values => {
@@ -746,7 +746,7 @@ It can be iterated as follows:
         }
     }
 
-Or even more simply, if you don't mind loading the whole resultset into memory:
+Or even more simply, if you don't mind loading the whole result set into memory:
 
     my @people = $stream->all;
 

@@ -42,7 +42,7 @@ __END__
 =head1 DESCRIPTION
 
 This role can provide a primitive C<search> facility (the API described in
-L<KiokuDB::Backend::Role::Query::Simple>) using the api provided by
+L<KiokuDB::Backend::Role::Query::Simple>) using the API provided by
 L<KiokuDB::Backend::Role::Scan>. While very inefficient for large data sets, of
 your databases are small this can be useful.
 

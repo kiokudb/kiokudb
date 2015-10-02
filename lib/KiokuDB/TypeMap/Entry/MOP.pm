@@ -77,7 +77,7 @@ sub compile_collapse_body {
         # at least check for additional attributes or other metadata which we
         # should probably error on anything we can't store
 
-        # theoretically this can do multiple inheritence too
+        # theoretically this can do multiple inheritance too
 
         my $ancestor = $meta;
         my @anon;
@@ -93,7 +93,7 @@ sub compile_collapse_body {
                     redo search;
                 }
             } elsif ( @super > 1 ) {
-                croak "Cannot resolve anonymous class with multiple inheritence: " . $meta->name;
+                croak "Cannot resolve anonymous class with multiple inheritance: " . $meta->name;
             } else {
                 croak "no super, ancestor: $ancestor (" . $ancestor->name . ")";
             }
@@ -629,7 +629,7 @@ If true, after applying version upgrade handlers, the updated entry will be
 written back to the database.
 
 Defaults to false but might default to true in future versions (unless the
-database is in readonly mode).
+database is in read-only mode).
 
 =back
 
