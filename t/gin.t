@@ -24,9 +24,9 @@ use Search::GIN::Extract::Class;
     extends qw(KiokuDB::Backend::Hash);
 
     with (
-	    'KiokuDB::GIN',
-	    'Search::GIN::Driver::Hash' => { -excludes => 'clear' },
-	    'Search::GIN::Extract::Delegate',
+        'KiokuDB::GIN',
+        'Search::GIN::Driver::Hash' => { -excludes => 'clear' },
+        'Search::GIN::Extract::Delegate',
     );
 
     sub clear {
